@@ -1,0 +1,23 @@
+.PostWrapper{
+    display: grid;
+    grid-template-columns: 70px 1fr 20px;
+    align-items: center;
+    grid-gap: 10px;
+    border-radius: 10px;
+    background-color: rgb(61, 61, 61);
+    padding: 10px;
+}
+.PostWrapper > img{
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+    margin: 0 auto;
+    align-self: start;
+}
+.PostWrapper span{
+    color: white;
+    font-size: 20px;
+}
+.PostWrapper button {
+    height: 15px;
+}

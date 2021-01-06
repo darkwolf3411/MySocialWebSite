@@ -1,0 +1,27 @@
+.AvatarWrapper{
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 10px;
+    background-color: rgb(31, 31, 31);
+    height: 320px;
+    border-radius: 10px;
+    padding: 30px;
+    align-items: center;
+    margin: 0 auto;
+}
+.profImg{
+    width: 200px;
+}
+.butt{
+    padding: 15px;
+    background-color: rgb(61, 61, 61);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    width: 100px;
+    height: 15px;
+    text-align: center;
+    align-items: center;
+    margin: 0 auto;
+}

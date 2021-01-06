@@ -1,0 +1,52 @@
+.ProfInfoWrapper{
+    display: grid;
+    background-color: rgb(31, 31, 31);
+    color: white;
+    border-radius: 10px;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2,35px) 1fr;
+    padding: 10px;
+    grid-gap: 10px;
+    max-height: 340px;
+}
+.ProfInfoWrapper>*{
+    height: 25px;
+    padding-left: 30px;
+}
+.ProfileInfo{
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    grid-template-rows: repeat(5,1fr);
+    grid-gap: 15px;
+    padding-top: 30px;
+    align-items: center;
+}
+.ProfName{
+    grid-column: 1/2;
+    grid-row: 1;
+    font-size: 25px;
+}
+.ProfStat{
+    grid-column: 1/3;
+    grid-row: 1/2;
+    align-self: center;
+    padding-top: 50px;
+    font-style: italic;
+    font-size: 15px;
+}
+.ProfAge{
+    grid-column: 2;
+    grid-row: 3;
+}
+.ProfAgeNam{
+    grid-column: 1;
+    grid-row: 3;
+}
+.ProfGenderNam{
+    grid-column: 1;
+    grid-row: 4;
+}
+.ProfGender{
+    grid-column: 2;
+    grid-row: 4;
+}

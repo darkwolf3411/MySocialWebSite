@@ -1,0 +1,59 @@
+.Posts{
+    display: grid;
+    grid-column: 2;
+    grid-row: 2;
+    grid-template-columns: min-content;
+    grid-template-rows: 130px min-content;
+    grid-gap: 15px;
+    background-color: rgb(31, 31, 31);
+    padding: 10px;
+    border-radius: 10px;
+    min-height: 450px;
+}
+.Posts .PostWrapper > div{
+    display: grid;
+    grid-gap: 10px;
+}
+.CreatePost{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    max-height: 111px;
+    grid-gap: 10px;
+    align-items: center;
+}
+.CreatePost textarea{
+    border-radius: 10px;
+    margin: 0px;
+    min-height: 89px;
+    max-width: 434px;
+    min-width: 434px;
+    outline: 0;
+    outline-offset: 0;
+    padding: 10px;
+    max-height: 89px;
+    background-color: rgb(61, 61, 61);
+    color: white;
+    font-size: 18px;
+    transition: all .5s ease-in-out;
+}
+.CreatePost textarea:focus{
+    box-shadow: 0px 0px 21px 0px rgba(255, 0, 238, 0.808);
+    transition: all .5s ease-in-out;
+}
+.butt{
+    padding: 15px;
+    background-color: rgb(61, 61, 61);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    width: 100px;
+    height: 15px;
+    text-align: center;
+    align-items: center;
+    margin: 0 auto;
+    cursor: pointer;
+}
+.butt:active{
+    position: relative;
+    top: 2px;
+}

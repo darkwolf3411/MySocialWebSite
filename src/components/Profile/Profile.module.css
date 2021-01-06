@@ -1,0 +1,7 @@
+.ProfileWrapper{
+    display: grid;
+    grid-template-columns: 300px 2fr;
+    grid-template-rows: 380px 1fr;
+    grid-gap: 10px;
+}
+

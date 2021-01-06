@@ -1,0 +1,12 @@
+.NavWrapper{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3,1fr);
+    grid-gap: 5px;
+    height: 100px;
+    width: 30px;
+}
+.NavWrapper a img{
+    width: 25px;
+    height: 25px;
+}
