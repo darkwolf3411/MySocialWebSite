@@ -1,9 +1,9 @@
 .NavWrapper{
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(3,1fr);
+    grid-template-rows:  repeat(3,min-content);
     grid-gap: 5px;
-    height: 100px;
+    height: 830px;
     width: 30px;
 }
 .NavWrapper a img{

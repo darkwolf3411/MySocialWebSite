@@ -11,7 +11,7 @@ const Posts = (props) => {
         let text = e.target.value;
         props.uppdatePost(text)
     }
-    let PostSplit = props.PostDate.map(con => <Post dispatch={props.dispatch} a={con.m} id={con.id}/>)
+    let PostSplit = props.PostDate.map(con => <Post dispatch={props.dispatch} key={con.id} a={con.m} id={con.id}/>)
     return (
         <div className={Style.Posts}>
             <div className={Style.CreatePost}>

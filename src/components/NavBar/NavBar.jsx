@@ -11,8 +11,8 @@ const NavBar = (props) => {
             <NavLink to='/Messages'>
                 <img src="https://is.gd/WvkQpj" alt="" />
             </NavLink>
-            <NavLink to=''>
-                <img src="https://is.gd/SSuv8O" alt="" />
+            <NavLink to='/Users'>
+                <img src="https://is.gd/9wzIdd" alt="" />
             </NavLink>
         </div>
     )

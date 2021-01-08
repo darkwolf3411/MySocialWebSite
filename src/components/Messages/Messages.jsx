@@ -4,7 +4,6 @@ import Sender from './Sender/Sender';
 import Send from './Send/Send';
 
 const Messages = (props) => {
-    
     let addMessage = () => {
         props.addMessage();
     }
@@ -16,8 +15,9 @@ const Messages = (props) => {
         ava={a.ava}
         name={a.name}
         lstmess={a.lstmess}
+        key={a.id}
         id={a.id} />)
-    let SendSplit = props.SendsData.map(a => <Send ava={a.ava} name={a.name} SendMessage={a.SendMessage} />)
+    let SendSplit = props.SendsData.map(a => <Send ava={a.ava} key={a.id} name={a.name} SendMessage={a.SendMessage} />)
     return (
         <div className={Style.MessWrapper}>
             <div className={Style.Senders}>

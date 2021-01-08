@@ -5,6 +5,7 @@ import Header from './components/header/Header';
 import NavBar from './components/NavBar/NavBar';
 import Profile from './components/Profile/Profile';
 import MessagesContainer from './components/Messages/MessagesContainer';
+import UsersContainer from './components/Users/UsersContainer';
 
 function App(props) {
   return (
@@ -16,7 +17,9 @@ function App(props) {
           <Route exat path='/Profile'
             render={() => <Profile />} />
           <Route path='/Messages'
-            render={() => <MessagesContainer store={props.store} />} />
+            render={() => <MessagesContainer />} />
+            <Route path='/Users'
+            render={() => <UsersContainer />} />
         </div>
       </div>
     </BrowserRouter>

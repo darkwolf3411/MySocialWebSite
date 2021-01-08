@@ -8,6 +8,7 @@ let initialState = {
             ava: "https://is.gd/sRpZTV",
             name: "Илья",
             SendMessage: "привет займи сотку урод блять",
+            id: 1
         },
     ],
     SenderDate: [
@@ -15,19 +16,19 @@ let initialState = {
             ava: "https://is.gd/sRpZTV",
             name: "Илья Киселев",
             lstmess: "привет займи сотку урод блять",
-            id: "1"
+            id: 1
         },
         {
             ava: "https://is.gd/n6J1dK",
             name: "Андрей Землянский",
             lstmess: "Пошли флексить",
-            id: "2"
+            id: 2
         },
         {
             ava: "https://is.gd/bQ1Wbl",
             name: "Максим Белев",
             lstmess: "Кс айда",
-            id: "3"
+            id: 3
         },
     ]
 }
@@ -35,18 +36,22 @@ let initialState = {
 const messageReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case ADD_MESSAGE:
+        case ADD_MESSAGE: 
             let newMessage = {
                 ava: "https://is.gd/sRpZTV",
                 name: "Кирилл",
                 SendMessage: state.newMessage,
             };
-            state.SendsData.push(newMessage);
-            state.newMessage = "";
-            return state;
-        case UPDATE_NEW_MESSAGE:
-            state.newMessage = action.newMess;
-            return state;
+            return {
+                ...state,
+                SendsData:[...state.SendsData,newMessage],
+                newMessage: ""
+            }
+        case UPDATE_NEW_MESSAGE: 
+            return {
+                ...state,
+                newMessage: action.newMess
+            }
         default:
             return state;
     }

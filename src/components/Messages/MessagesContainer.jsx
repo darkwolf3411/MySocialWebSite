@@ -1,34 +1,28 @@
 import React from 'react'
+import { connect } from 'react-redux';
 import { uppdateNewMessageActionCreater, addessageActionCreactor } from '../../redux/MessagesReducer';
 import Messages from './Messages';
-import StoreContext from './../../StoreContext';
 
-
-const MessagesContainer = (props) => {
-    return (
-        <StoreContext.Consumer>
-            {
-                (store) => {
-                    let state = store.getState()
-
-                    let addMessage = () => {
-                        store.dispatch(addessageActionCreactor());
-                    }
-                    let updateMess = (mess) => {
-                        store.dispatch(uppdateNewMessageActionCreater(mess))
-                    }
-                    return (
-                        <Messages
-                            addMessage={addMessage}
-                            uppdateNewMessage={updateMess}
-                            SenderDate={store.getState().messagesPage.SenderDate}
-                            SendsData={store.getState().messagesPage.SendsData}
-                            newMessage={store.getState().messagesPage.newMessage}
-                        />)
-                }
-            }
-        </StoreContext.Consumer>
-    )
+let mapStateToProps = (state) => {
+    
+    return {
+        SenderDate: state.messagesPage.SenderDate,
+        SendsData: state.messagesPage.SendsData,
+        newMessage: state.messagesPage.newMessage,
+    }
 }
+
+let mapDispatchToProps = (dispatch) => {
+    return {
+        addMessage: ()=>{
+            dispatch(addessageActionCreactor())
+        },
+        uppdateNewMessage: (mess)=>{
+            dispatch(uppdateNewMessageActionCreater(mess))
+        }
+    }
+}
+
+const MessagesContainer = connect(mapStateToProps, mapDispatchToProps)(Messages);
 
 export default MessagesContainer;

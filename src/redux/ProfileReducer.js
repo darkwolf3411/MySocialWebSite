@@ -37,22 +37,32 @@ let initialState = {
 
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_POST:
+        case ADD_POST: {
             if (state.newPostText != '') {
                 let newPost = {
                     id: 1,
                     m: state.newPostText,
                     likeCound: 0
                 };
-                state.PostDate.push(newPost);
-                state.newPostText = '';
-                return state;
+                return {
+                    ...state,
+                    PostDate:[...state.PostDate,newPost],
+                    newPostText: ""
+                };
             }
-        case UPDATE_POST_TEXT:
-            state.newPostText = action.newText;
-            return state;
-        case DELL_POST:
-            state.PostDate = state.PostDate.splice(action.id,1)
+        }
+        case UPDATE_POST_TEXT: {
+            return {
+                ...state,
+                newPostText: action.newText
+            };
+        }
+        case DELL_POST: {
+            return {
+                ...state,
+                PostDate: state.PostDate.splice(action.id, 1)
+            }
+        }
         default:
             return state
     }
