@@ -3,9 +3,9 @@ import { BrowserRouter } from 'react-router-dom';
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
 import Header from './components/header/Header';
 import NavBar from './components/NavBar/NavBar';
-import Profile from './components/Profile/Profile';
 import MessagesContainer from './components/Messages/MessagesContainer';
 import UsersContainer from './components/Users/UsersContainer';
+import ProfileContainer from './components/Profile/ProfileContainer';
 
 function App(props) {
   return (
@@ -15,7 +15,7 @@ function App(props) {
         <div className='BodyWrapper'>
           <NavBar />
           <Route exat path='/Profile'
-            render={() => <Profile />} />
+            render={() => <ProfileContainer />} />
           <Route path='/Messages'
             render={() => <MessagesContainer />} />
             <Route path='/Users'

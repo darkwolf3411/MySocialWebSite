@@ -1,6 +1,7 @@
 const ADD_POST = 'ADD_POST';
 const UPDATE_POST_TEXT = "UPDATE_POST_TEXT";
 const DELL_POST = 'DELL_POST';
+const SET_USER_PROFILE = 'SET_USER_PROFILE';
 
 let initialState = {
     newPostText: "",
@@ -32,7 +33,8 @@ let initialState = {
             friendName: "Максим",
             id: "3"
         },
-    ]
+    ],
+    profile: null
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -63,6 +65,12 @@ const profileReducer = (state = initialState, action) => {
                 PostDate: state.PostDate.splice(action.id, 1)
             }
         }
+        case SET_USER_PROFILE: {
+            return {
+                ...state,
+                profile: action.profile
+            }
+        }
         default:
             return state
     }
@@ -78,5 +86,9 @@ export const dellPostCreater = (id) => ({
 export const uppdatePostTextActionCreater = (text) => ({
     type: UPDATE_POST_TEXT,
     newText: text
+})
+export const setUserProfile = (profile) => ({
+    type: SET_USER_PROFILE,
+    profile
 })
 export const addPostActionCreactor = () => ({ type: ADD_POST })

@@ -1,12 +1,15 @@
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
+const IS_SERCH= "IS_SERCH"
 
 let initialState = {
-    users: []
+    users: [],
+    currentPage: 0,
+    totalUsersCount: 5,
+    isSerch: true
 }
 const usersReducer = (state = initialState, action) => {
-    debugger
     switch (action.type) {
         case FOLLOW:
             return {
@@ -28,10 +31,16 @@ const usersReducer = (state = initialState, action) => {
                     return u;
                 })
             }
+        case IS_SERCH:
+            return {
+                ...state,
+                isSerch: action.isSerchValue,
+                users: []
+            }
         case SET_USERS:
             return {
                 ...state,
-                users: [...state.users, ...action.users]
+                users: action.users
             }
         default:
             return state;
@@ -40,8 +49,12 @@ const usersReducer = (state = initialState, action) => {
 
 export default usersReducer;
 
-export const followAC = (id) => ({ type: FOLLOW, id })
+export const follow = (id) => ({ type: FOLLOW, id })
 
-export const unfollowAC = (id) => ({ type: UNFOLLOW, id })
+export const unfollow = (id) => ({ type: UNFOLLOW, id })
 
-export const setUsersAC = (users) => ({ type: SET_USERS, users })
+export const setNewUsers = (id) => ({ type: UNFOLLOW, id })
+
+export const setUsers = (users) => ({ type: SET_USERS, users })
+
+export const isSerch = (isSerchValue) => ({ type: IS_SERCH, isSerchValue })

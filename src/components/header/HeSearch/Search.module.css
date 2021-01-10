@@ -45,3 +45,10 @@
     left: 240px;
     transition: all .5s ease-in-out;
 }
+.SerchResult{
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    background-color: red;
+    color: black;
+}

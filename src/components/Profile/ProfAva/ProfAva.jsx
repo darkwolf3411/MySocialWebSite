@@ -4,7 +4,7 @@ import Style from './ProfAva.module.css'
 const Ava = (props) => {
     return(
         <div className={Style.AvatarWrapper}>
-                <img src="https://is.gd/GsAItc" alt="" className={Style.profImg} />
+                <img src={props.photos} alt="" className={Style.profImg} />
                 <a href="" className={Style.butt}>Редактировать</a>
             </div>
     )

@@ -10,8 +10,8 @@ const Profile = (props) => {
     // let state = props.store.getState()
     return (
         <div className={Style.ProfileWrapper}>
-            <Ava />
-            <Info />
+            <Ava photos={props.profile.photos.large}/>
+            <Info profile={props.profile}/>
             <PostsContainer store={props.store}/>
             {/* <Friends
                 FriendData={state.profilePage.FriendData} /> */}
