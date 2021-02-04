@@ -5,12 +5,14 @@ import Menu from './HeMenu/Menu';
 import SearchContainer from './HeSearch/SearchContainer';
 
 const Header = (props) => {
+    debugger
     return (
         <div className={Style.headerWrapper}>
             <div className={Style.header}>
                 <Logo />
                 <SearchContainer />
-                <Menu />      
+                <Menu profileImage={props.profileImage}
+                profileName={props.profileName} />
             </div>
         </div>
     )

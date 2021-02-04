@@ -1,35 +1,65 @@
 import React from 'react'
 import Profile from './Profile';
 import { connect } from 'react-redux';
-import * as axios from 'axios'
-import { setUserProfile } from '../../redux/ProfileReducer';
-import PreLoader from '../common/PreLoader/PreLoader';
+import { setUserProfile,setNewPrfileImage,updateStatus,
+     statusChange, getStatus, reductAccpetChange } from '../../redux/ProfileReducer';
+import { withRouter } from 'react-router-dom';
+import PreLoader from './../common/PreLoader/PreLoader';
+import { profileAPI } from '../API/API';
+import { withAuthRedirect } from '../../hoc/witchRedirect';
+import { compose } from 'redux';
 
 class ProfileContainer extends React.Component {
     constructor(props) {
         super(props);
     }
     componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`)
-            .then(response => {
-                this.props.setUserProfile(response.data)
-            });
-    }
-    render(){
-        if (!this.props.profile) {
-             return <PreLoader />
+        debugger
+        let userID = this.props.match.params.userID
+        if (!userID) {
+            userID = this.props.userID;
+            this.props.reductAccpetChange(true)
+        }else{
+            this.props.reductAccpetChange(false)
         }
-        return(
-            <Profile {...this.props} profile={this.props.profile}/>
+        profileAPI.getUsersProfile(userID).then(response => {
+            this.props.setUserProfile(response.data)
+        });
+        this.props.getStatus(userID)
+    }
+    render() {
+        if (!this.props.profile) {
+            return <PreLoader />
+        }
+        return (
+            <>
+                <Profile {...this.props}
+                profile={this.props.profile}
+                userID ={this.props.userID}
+                profileImage={this.props.profileImage}
+                status={this.props.status}
+                statusChange={this.props.statusChange}
+                reductAccpet={this.props.reductAccpet} />
+            </>
         )
     }
 }
-
+let AuthRedirectComponent = withAuthRedirect(ProfileContainer)
 let mapStateToProps = (state) => {
-    return{
-        profile: state.profilePage.profile
+    return {
+        status: state.profilePage.status,
+        statusValue: state.profilePage.statusText,
+        profileImage: state.profilePage.profileImage,
+        userID: state.auth.id,
+        profile: state.profilePage.profile,
+        reductAccpet: state.profilePage.reductAccpet        
     }
 }
+export default compose(
+    connect(mapStateToProps, { setUserProfile, setNewPrfileImage,
+         updateStatus, statusChange, getStatus, reductAccpetChange }),
+    withRouter
+)(AuthRedirectComponent)
+// let WitchURLDateContainerComponent = withRouter(AuthRedirectComponent);
 
-
-export default connect(mapStateToProps,{setUserProfile})(ProfileContainer);
+//  connect(mapStateToProps, { setUserProfile, setNewPrfileImage })(WitchURLDateContainerComponent);

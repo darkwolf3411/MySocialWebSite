@@ -2,28 +2,62 @@ import React from 'react'
 import Style from './Menu.module.css'
 import { NavLink } from 'react-router-dom'
 
-const Menu = (props) => {
+// let state = {
+//     toggleMenu: false
+//  }
+//  let subMenuOn = () => {
+//      setState({
+//          toggleMenu: true
+//      })
+//  }
 
-    let subMenu = React.createRef();
+// const Menu = (props) => {
+//     return (
+//         <div onClick={subMenuOn} className={Style.menu}>
+//             <div className={Style.userWrapper}>
+//                 <img src={props.photos} alt="" />
+//                 <span>Кирилл</span>
+//             </div>
+//             {state.toggleMenu? (<div className={Style.submenu}>
+//                 <NavLink to=''>Профиль</NavLink>
+//                 <NavLink to=''>Настройки</NavLink>
+//                 <NavLink to=''>Выйти</NavLink>
+//             </div>) : null}
+//         </div>
+//     )
+// }
 
-    let subMenuOn = () => {
-        
-        subMenu.current.classList.toggle("submenuOn");
+// export default Menu;
+
+class Menu extends React.Component {
+    state = {
+        toggleMenu: false
     }
-
-    return (
-        <div onClick={subMenuOn} className={Style.menu}>
-            <div className={Style.userWrapper}>
-                <img src="https://is.gd/GsAItc" alt="" />
-                <span>Кирилл</span>
+    subMenuOn = () => {
+        this.setState({
+            toggleMenu: true
+        })
+    }
+    blurMenu = () => {
+        this.setState({
+            toggleMenu: false
+        })
+    }
+    render(){
+        return (
+            <div onClick={this.subMenuOn} className={Style.menu}>
+                <div className={Style.userWrapper}>
+                    <img src={this.props.photos} alt="" />
+                    <span>Кирилл</span>
+                </div>
+                {this.state.toggleMenu? (<div onBlur={this.blurMenu} className={Style.submenu}>
+                    <NavLink onClick={this.blurMenu} to='/Profile'>Профиль</NavLink>
+                    <NavLink to=''>Настройки</NavLink>
+                    <NavLink to=''>Выйти</NavLink>
+                </div>) : null}
             </div>
-            <div ref={subMenu} className={Style.submenu}>
-                <NavLink to=''>Профиль</NavLink>
-                <NavLink to=''>Настройки</NavLink>
-                <NavLink to=''>Выйти</NavLink>
-            </div>
-        </div>
-    )
+        )
+    }
 }
 
 export default Menu;

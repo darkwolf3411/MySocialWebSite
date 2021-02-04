@@ -8,20 +8,15 @@
     grid-gap: 10px;
     align-items: center;
 }
-.submenuOn{
-    transform: translateY(0);
-    opacity: 1;
-    transition: all .1s ease-in-out;
-}
 .submenu{
     position: absolute;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3,1fr);
     background-color: rgb(34, 34, 34);
-    opacity: 0;
+    opacity: 1;
     width: 115%;
-    top: 52px;
+    top: 81px;
     transform: translateY(-32px);
     transition: all .1s ease-in-out;
 }

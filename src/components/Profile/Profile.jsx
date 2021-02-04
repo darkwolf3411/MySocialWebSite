@@ -4,14 +4,22 @@ import Ava from './ProfAva/ProfAva';
 import Info from './ProfInfo/ProfInfo';
 import Friends from './ProfFriends/Friends';
 import PostsContainer from './ProfPosts/ProfPostsContainer';
+import PreLoader from './../common/PreLoader/PreLoader';
 
 
 const Profile = (props) => {
-    // let state = props.store.getState()
     return (
         <div className={Style.ProfileWrapper}>
-            <Ava photos={props.profile.photos.large}/>
-            <Info profile={props.profile}/>
+            <Ava photos={props.profile.photos.large}
+            profileImage={props.profileImage}
+            setNewPrfileImage={props.setNewPrfileImage}/>
+            <Info profile={props.profile}
+            status={props.status}
+            reductAccpet={props.reductAccpet}
+            userID={props.userID}
+            updateStatus={props.updateStatus}
+            statusChange={props.statusChange} 
+            statusValue={props.statusValue}/>
             <PostsContainer store={props.store}/>
             {/* <Friends
                 FriendData={state.profilePage.FriendData} /> */}
