@@ -7,6 +7,7 @@ import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/header/HeaderContainer';
 import Login from './components/LoginPage/Login';
+import SettingsContainer from './components/SettingsContainer';
 
 function App(props) {
   
@@ -24,6 +25,8 @@ function App(props) {
             render={() => <Login />} />
             <Route path='/Users'
             render={() => <UsersContainer />} />
+            <Route path='/Settings'
+            render={() => <SettingsContainer />} />
         </div>
       </div>
     </BrowserRouter>

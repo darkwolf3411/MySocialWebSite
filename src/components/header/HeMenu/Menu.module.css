@@ -9,6 +9,7 @@
     align-items: center;
 }
 .submenu{
+    z-index: 10;
     position: absolute;
     display: grid;
     grid-template-columns: 1fr;

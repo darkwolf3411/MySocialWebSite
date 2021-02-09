@@ -31,7 +31,6 @@ const Users = (props) => {
                                 {u.followed ?
                                     <button disabled={props.followChoose.some(e => e === u.id)}
                                         className={Style.FollowedButton} onClick={() => {
-                                            
                                             props.unfollowTC(u.id)
                                         }}>followed</button> :
                                     <button disabled={props.followChoose.some(e => e === u.id)}

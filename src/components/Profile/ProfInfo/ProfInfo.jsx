@@ -30,9 +30,6 @@ class Info extends React.Component {
         this.deactivateEditMode()
         this.props.updateStatus(this.props.statusValue);
     }
-    timer = () => {
-        setInterval(this.deactivateEditMode(), 500);
-    }
     render() {
         return (
             <div className={Style.ProfInfoWrapper}>
@@ -40,7 +37,6 @@ class Info extends React.Component {
                     <div className={Style.RedactWindow}>
                         <input
                             autoFocus
-                            // onBlur={this.timer}
                             type="text"
                             value={this.props.statusValue}
                             onChange={e => this.props.statusChange(e.target.value)} />

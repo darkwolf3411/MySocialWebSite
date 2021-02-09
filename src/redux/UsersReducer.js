@@ -1,4 +1,5 @@
 import { API } from './../components/API/API';
+import { isFollow } from './ProfileReducer';
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
@@ -9,10 +10,11 @@ const IS_BUTTON_FOLLOW_CLICK = "IS_BUTTON_FOLLOW_CLICK"
 let initialState = {
     users: [],
     currentPage: 0,
-    totalUsersCount: 5,
+    totalUsersCount: 20,
     isSerch: true,
     toggleFollowButt: false,
     followChoose: [],
+    userIsFollow: false,
 }
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -77,6 +79,7 @@ export const unfollowTC = (userID) => {
         dispatch(onFollowButtClick(true,userID))
         API.unFollowAPI(userID).then(data => {
             if (data.resultCode === 0) {
+                dispatch(isFollow(false))
                 dispatch(onFollowButtClick(false,userID))
                 dispatch(unfollow(userID))
             }
@@ -97,6 +100,7 @@ export const followTC = (userID) => {
         dispatch(onFollowButtClick(true,userID))
         API.followAPI(userID).then(data => {
             if (data.resultCode === 0) {
+                dispatch(isFollow(true))
                 dispatch(onFollowButtClick(false,userID))
                 dispatch(follow(userID))
             }
