@@ -51,24 +51,24 @@ class Info extends React.Component {
                 <table className={Style.iksweb}>
                     <tbody>
                         <tr>
+                            <td className={Style.SocialName}>О себе: </td>
+                            <td className={Style.SocialData}>{this.props.profile.aboutMe ? this.props.profile.aboutMe
+                                : "нет"}</td>
+                        </tr>
+                        <tr>
                             <td className={Style.SocialName}>instagram: </td>
-                            <td className={Style.SocialData}>{this.props.profile.contacts.instagram?this.props.profile.contacts.instagram
-                            :"нет"}</td>
+                            <td className={Style.SocialData}>{this.props.profile.contacts.instagram ? this.props.profile.contacts.instagram
+                                : "нет"}</td>
                         </tr>
                         <tr>
                             <td className={Style.SocialName}>Facebook: </td>
-                            <td className={Style.SocialData}>{this.props.profile.contacts.facebook?this.props.profile.contacts.facebook
-                            :"нет"}</td>
-                        </tr>
-                        <tr>
-                            <td className={Style.SocialName}>vk:</td>
-                            <td className={Style.SocialData}>{this.props.profile.contacts.vk?this.props.profile.contacts.vk
-                            :"нет"}</td>
+                            <td className={Style.SocialData}>{this.props.profile.contacts.facebook ? this.props.profile.contacts.facebook
+                                : "нет"}</td>
                         </tr>
                         <tr>
                             <td className={Style.SocialName}>GitHub:</td>
-                            <td className={Style.SocialData}>{this.props.profile.contacts.github?this.props.profile.contacts.github
-                            :"нет"}</td>
+                            <td className={Style.SocialData}>{this.props.profile.contacts.github ? this.props.profile.contacts.github
+                                : "нет"}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -80,23 +80,33 @@ class Info extends React.Component {
                 {this.state.setEnabledMoreInfo ? <table>
                     <tbody>
                         <tr>
+                            <td className={Style.SocialName}>vk:</td>
+                            <td className={Style.SocialData}>{this.props.profile.contacts.vk ? this.props.profile.contacts.vk
+                                : "нет"}</td>
+                        </tr>
+                        <tr>
                             <td className={Style.SocialName}>Twitter: </td>
-                            <td className={Style.SocialData}>{this.props.profile.contacts.twitter?this.props.profile.contacts.twitter
-                            :"нет"}</td>
+                            <td className={Style.SocialData}>{this.props.profile.contacts.twitter ? this.props.profile.contacts.twitter
+                                : "нет"}</td>
                         </tr>
                         <tr>
                             <td className={Style.SocialName}>website:</td>
-                            <td className={Style.SocialData}>{this.props.profile.contacts.website?this.props.profile.contacts.website
-                            :"нет"}</td>
+                            <td className={Style.SocialData}>{this.props.profile.contacts.website ? this.props.profile.contacts.website
+                                : "нет"}</td>
                         </tr>
                         <tr>
                             <td className={Style.SocialName}>YouTube:</td>
-                            <td className={Style.SocialData}>{this.props.profile.contacts.youtube?this.props.profile.contacts.youtube
-                            :"нет"}</td>
+                            <td className={Style.SocialData}>{this.props.profile.contacts.youtube ? this.props.profile.contacts.youtube
+                                : "нет"}</td>
                         </tr>
                         <tr>
                             <td className={Style.SocialName}>В поисках работы: </td>
-                            <td className={Style.SocialData}>{this.props.profile.contacts.lookingForAJob ? "ищу работу" : "не ищу работу"}</td>
+                            <td className={Style.SocialData}>{this.props.profile.lookingForAJob ? "ищу работу" : "не ищу работу"}</td>
+                        </tr>
+                        <tr>
+                            <td className={Style.SocialName}>Взгляд о работе: </td>
+                            <td className={Style.SocialData}>{this.props.profile.lookingForAJobDescription ?
+                                this.props.profile.lookingForAJobDescription : "нет"}</td>
                         </tr>
                     </tbody>
                 </table> : null}

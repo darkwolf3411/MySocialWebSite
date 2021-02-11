@@ -9,6 +9,8 @@ const UPDATE_STATUS_TEXT = 'UPDATE_STATUS_TEXT';
 const REDUCT_ACCPET_CHANGE = 'REDUCT_ACCPET_CHANGE';
 const GET_FOLLOW_USER = 'GET_FOLLOW_USER';
 const CHANGE_PROFILE_DATA = 'CHANGE_PROFILE_DATA';
+const SET_NEW_USER_DATA = 'SET_NEW_USER_DATA';
+const SET_LOOKING_FOR_JOB = 'SET_LOOKING_FOR_JOB';
 
 let initialState = {
     newPostText: "",
@@ -71,6 +73,10 @@ const profileReducer = (state = initialState, action) => {
         case SET_NEW_STATUS: {
             return {
                 ...state,
+                profile:{
+                    ...state.profile,
+                    ["aboutMe"]: action.status
+                },
                 status: action.status,
                 statusText: ""
             }
@@ -87,28 +93,46 @@ const profileReducer = (state = initialState, action) => {
                 reductAccpet: action.accpet
             }
         }
+        case SET_LOOKING_FOR_JOB: {
+            return {
+                ...state,
+                profile: {
+                    ...state.profile,
+                    lookingForAJob: action.value
+                }
+            }
+        }
         case GET_FOLLOW_USER: {
             return {
                 ...state,
                 isFollow: action.isFollow
             }
         }
+        case SET_NEW_USER_DATA: {
+            return {
+                ...state,
+                profile: action.data
+            }
+        }
         case CHANGE_PROFILE_DATA: {
-            for (const key in state.profile) {
-                if (key === action.name) {
-                    debugger
-                    return {
-                        ...state,
-                        ...state.profile[key] = action.value
+            debugger
+            if (action.name === "profile") {
+                return{
+                    ...state,
+                    profile: {
+                        ...state.profile,
+                        [action.key]: action.value
                     }
-                }
-                for (const key in state.profile.contacts) {
-                    if (key === action.name) {
-                        debugger
-                        return {
-                            ...state,
-                            ...state.profile.contacts[key] = action.value
-                        }
+                }   
+            }else if (action.name === "contacts") {
+                return{
+                    ...state,
+                    profile: {
+                        ...state.profile,
+                        contacts:{
+                            ...state.profile.contacts,
+                            [action.key]: action.value
+                        },
                     }
                 }
             }
@@ -145,13 +169,21 @@ export const setUserImage = (newImage, isImage) => ({
     type: SET_USER_IMAGE,
     newImage, isImage
 })
-export const changeProfileData = (name, value) => ({
+export const changeProfileData = (key, value, name) => ({
     type: CHANGE_PROFILE_DATA,
-    name, value
+    key, value, name
 })
 export const isFollow = (isFollow) => ({
     type: GET_FOLLOW_USER,
     isFollow
+})
+export const setNewUsersData = (newUserData) => ({
+    type: SET_NEW_USER_DATA,
+    data: newUserData
+})
+export const setLookingForJob = (value) => ({
+    type: SET_LOOKING_FOR_JOB,
+    value
 })
 export const setNewPrfileImage = (newUserImage) => {
     return (dispatch) => {
@@ -164,6 +196,15 @@ export const getFollowUser = (userID) => {
     return (dispatch) => {
         API.getFollowAPI(userID).then(data => {
             dispatch(isFollow(data))
+        })
+    }
+}
+export const updateUsersSettings = (data) => {
+    return (dispatch) => {
+        profileAPI.updateProfileData(data).then(response => {
+            if (response.resultCode === 0) {
+                dispatch(setNewUsersData(response.data))   
+            }
         })
     }
 }

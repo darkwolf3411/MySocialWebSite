@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { withAuthRedirect } from './../hoc/witchRedirect';
 import { profileAPI } from './API/API';
 import Settings from './Settings';
-import { setUserProfile, changeProfileData } from './../redux/ProfileReducer';
+import {setLookingForJob, setUserProfile, changeProfileData, updateUsersSettings } from './../redux/ProfileReducer';
 import PreLoader from './common/PreLoader/PreLoader';
 
 class SettingsContainer extends React.Component {
@@ -34,6 +34,6 @@ let mapStateToProps = (state) => {
 }
 
 export default compose(
-    connect(mapStateToProps, { setUserProfile, changeProfileData }),
+    connect(mapStateToProps, {setLookingForJob, setUserProfile, changeProfileData, updateUsersSettings }),
     withAuthRedirect
 )(SettingsContainer)

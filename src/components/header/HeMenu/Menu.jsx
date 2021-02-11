@@ -23,9 +23,9 @@ class Menu extends React.Component {
                     <img src={this.props.photos} alt="" />
                     <span>Кирилл</span>
                 </div>
-                {this.state.toggleMenu ? <div className={Style.submenu}>
-                    <NavLink to='/Profile' onClick={()=>this.subMenuOff}>Профиль</NavLink>
-                    <NavLink to='/Settings' onClick={()=>this.subMenuOff}>Настройки</NavLink>
+                {this.state.toggleMenu ? <div onMouseLeave={this.subMenuOff} className={Style.submenu}>
+                    <NavLink to='/Profile' onClick={this.subMenuOff}>Профиль</NavLink>
+                    <NavLink to='/Settings' onClick={this.subMenuOff}>Настройки</NavLink>
                     <NavLink to='' onClick={this.subMenuOff}>Выйти</NavLink>
                 </div> : null}
             </div>
